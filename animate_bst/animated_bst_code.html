@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>Web Programming project for  </title>
+<script type = "text/javascript"> 
+
+var  A =[]; // The array to be used for the construction of the BST. 
+
+var enteredString = "The Entered Sorted Array is";
+
+var previousEntry=-10000000;
+
+function InsertNumbers(elements)
+{
+    var currentEntry=parseInt(elements);
+    if(currentEntry<previousEntry)
+    {
+        alert("Enter the values in the sorted way");
+    }
+    else
+    {
+    enteredString= enteredString+elements+" ";
+    element = document.getElementById("enteredValueLabel");
+    element.innerHTML=enteredString;
+    previousEntry=currentEntry;
+    }
+}
+
+
+
+</script>
+
+<style>
+
+body { margin-left:10px; }
+ul  { list-style-type: none;padding:12px 0px; }
+ul  li {position:relative; border:1px solid gray; display:inline-block; width:36px; height:36px; 
+text-align:center; line-height:36px;margin-left:5px; background-color:lightgray} 
+
+ #node { position:relative; padding:2px; margin:3px; font-weight:bold; border:3px solid gray; border-radius:50%; background:yellow; } 
+
+ label, select, input[type=button] { font-size:1.1em;  margin-left:8px; }
+
+ input[type=button] { margin-left:16px; padding:1px 12px; }
+
+</style>
+</head>
+<body>
+<h1>Pictorial Representation of the BST from a sorted array</h1>
+
+<label id="EnterElement">Enter the Values: </label>
+<input id="enteredValue" type="text" name="ValueOfElements">
+<input id="insertEle" type="button" value="Add" onclick="InsertNumbers(enteredValue.value);"/>
+
+<p>
+<label id="enteredValueLabel"></label>
+</p>
+<p>
+<input type="button" value="Create BST"  onclick=" "/>
+</p>
+  
+<div  id="OutDiv" > 
+    <div  id=node style="top:30px; left:500px; position:relative; display:inline-block">hi</div>
+    <div  id=node style="top:70px; left:400px; position:relative;  display:inline-block">hi1</div>
+</div>
+</body>
+</html>
