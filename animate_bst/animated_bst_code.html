@@ -6,6 +6,8 @@
 
 var  A =[]; // The array to be used for the construction of the BST. 
 
+var height;
+
 var enteredString = "The Entered Sorted Array is ";
 
 var previousEntry=-10000000;
@@ -29,10 +31,11 @@ function InsertNumbers(elements)
 
 function getArrayLength()
 {
-    console.log(A.length-1);
+    height=Math.floor(Math.log(A.length)/Math.log(2));
+    console.log(height);
     return A.length-1;
 }
-function ConstructBST(start,end,left,right,x,y)
+function ConstructBST(start,end,left,right,x,y,level)
 {
     if(start<=end)
     {
@@ -41,18 +44,18 @@ function ConstructBST(start,end,left,right,x,y)
         if(left==1 && right==0)
         {
             x+=50;
-            y-=50;
+            y-=(Math.pow(10,height-level)+50);
         }
         else if(left==0 && right==1)
         {
             x+=50;
-            y+=50;
+            y+=(Math.pow(10,height-level)+50);
         }
         element.innerHTML+='<div id=node style="top:'+x+'px; left:'+y+'px;">'+A[mid]+'</div>';
-        ConstructBST(start,mid-1,1,0,x,y);
+        ConstructBST(start,mid-1,1,0,x,y,level+1);
         // the mid is getting lost so calculating the mid again for the right parameter
         mid=Math.floor((start+end)/2);
-        ConstructBST(mid+1,end,0,1,x,y);
+        ConstructBST(mid+1,end,0,1,x,y,level+1);
     }
     else
     {
@@ -90,7 +93,7 @@ text-align:center; line-height:36px;margin-left:5px; background-color:lightgray}
 <label id="enteredValueLabel"></label>
 </p>
 <p>
-<input type="button" value="Create BST"  onclick="ConstructBST(0,getArrayLength(),0,0,250,800);"/>
+<input type="button" value="Create BST"  onclick="ConstructBST(0,getArrayLength(),0,0,250,800,0);"/>
 </p>
   
 <div  id="OutDiv" > 
