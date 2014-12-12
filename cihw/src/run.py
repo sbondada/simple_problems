@@ -96,8 +96,15 @@ if __name__=="__main__":
     #Applying regression and generating models
     clf = svm.SVR() 
     train_target_list = get_target_list(train_image_list)
-    print len(train_target_list)
-    print len(train_image_list)
-
+    #extracting only the histogram from the tuples with histogram and centers lists
+    train_hog_histograms_list = [x[0]  for x in train_hog_histograms_list]
     clf.fit(train_hog_histograms_list,train_target_list)
-     
+
+    test_hog_histograms_list = [x[0]  for x in test_hog_histograms_list]
+    print clf.predict(test_hog_histograms_list)
+
+    train_hist_list = [x[0]  for x in train_hist_list]
+    clf.fit(train_hist_list,train_target_list)
+
+    test_hist_list = [x[0]  for x in test_hist_list]
+    print clf.predict(test_hist_list)
